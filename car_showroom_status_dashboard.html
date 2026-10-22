@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){try{var t=localStorage.getItem('korat_theme');if(!t){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();</script>
+    <title>เช็คสถานะโชว์รูมรถยนต์ & EV นครราชสีมา (Khorat Car & EV Showroom Portal)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kanit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                        },
+                        ev: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Kanit', sans-serif; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* ================= Dark mode ================= */
+        html.dark { color-scheme: dark; }
+        html.dark, html.dark body { background: #0b1220 !important; color: #e2e8f0; }
+        html.dark .glass-header { background: rgba(11, 18, 32, 0.88); }
+        html.dark .bg-white { background-color: #111a2e !important; }
+        html.dark .bg-slate-50 { background-color: #0f172a !important; }
+        html.dark .bg-slate-100 { background-color: #1a2540 !important; }
+        html.dark .hover\:bg-slate-100:hover { background-color: #1f2c4d !important; }
+        html.dark .hover\:bg-slate-200:hover { background-color: #26365c !important; }
+        html.dark .bg-slate-800 { background-color: #1e293b !important; }
+        html.dark .hover\:bg-slate-900:hover { background-color: #0f172a !important; }
+        html.dark .text-slate-900, html.dark .text-slate-800 { color: #f1f5f9 !important; }
+        html.dark .text-slate-700, html.dark .text-slate-600 { color: #cbd5e1 !important; }
+        html.dark .text-slate-500 { color: #94a3b8 !important; }
+        html.dark .text-slate-400 { color: #7d8aa3 !important; }
+        html.dark .border-slate-100, html.dark .border-slate-200, html.dark .border-slate-300,
+        html.dark .border-slate-200\/80, html.dark .border-slate-200\/60 { border-color: #243049 !important; }
+        html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: #243049 !important; }
+        html.dark input, html.dark select { background-color: #0f172a !important; color: #e2e8f0 !important; border-color: #243049 !important; }
+        html.dark input::placeholder { color: #64748b; }
+        html.dark h1.bg-clip-text { background-image: linear-gradient(to right, #f8fafc, #93c5fd, #6ee7b7); }
+        html.dark .bg-emerald-50, html.dark .bg-emerald-100 { background-color: rgba(16,185,129,.16) !important; }
+        html.dark .text-emerald-700, html.dark .text-emerald-800 { color: #6ee7b7 !important; }
+        html.dark .border-emerald-200 { border-color: rgba(16,185,129,.35) !important; }
+        html.dark .bg-rose-50, html.dark .bg-rose-100 { background-color: rgba(244,63,94,.16) !important; }
+        html.dark .text-rose-700, html.dark .text-rose-800 { color: #fda4af !important; }
+        html.dark .border-rose-200 { border-color: rgba(244,63,94,.35) !important; }
+        html.dark .bg-amber-50, html.dark .bg-amber-100 { background-color: rgba(245,158,11,.16) !important; }
+        html.dark .text-amber-600, html.dark .text-amber-700, html.dark .text-amber-800 { color: #fcd34d !important; }
+        html.dark .border-amber-200 { border-color: rgba(245,158,11,.35) !important; }
+        html.dark .bg-sky-50, html.dark .bg-sky-100 { background-color: rgba(14,165,233,.16) !important; }
+        html.dark .text-sky-700, html.dark .text-sky-800 { color: #7dd3fc !important; }
+        html.dark .border-sky-200 { border-color: rgba(14,165,233,.35) !important; }
+        html.dark .bg-violet-100 { background-color: rgba(139,92,246,.18) !important; }
+        html.dark .text-violet-800 { color: #c4b5fd !important; }
+        html.dark .border-violet-200 { border-color: rgba(139,92,246,.35) !important; }
+        html.dark .bg-brand-50\/70, html.dark .bg-brand-100 { background-color: rgba(37,99,235,.2) !important; }
+        html.dark .text-brand-700, html.dark .text-brand-900 { color: #bfdbfe !important; }
+        html.dark .text-brand-600 { color: #93c5fd !important; }
+        html.dark ::-webkit-scrollbar-track { background: #0f172a; }
+        html.dark ::-webkit-scrollbar-thumb { background: #334155; }
+        html.dark #liveClock { background: #1a2540 !important; border-color: #243049 !important; }
+        .photo-img { transition: opacity .3s; }
+    </style>
+</head>
+<body class="min-h-full flex flex-col text-slate-800">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-30 glass-header border-b border-slate-200/80 shadow-sm transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Title -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-emerald-500 text-white flex items-center justify-center shadow-lg shadow-brand-500/20">
+                        <i class="fa-solid fa-car-side text-2xl animate-pulse"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 via-brand-800 to-emerald-700 bg-clip-text text-transparent">
+                            เช็คสถานะโชว์รูมรถยนต์ & EV โคราช
+                        </h1>
+                        <p class="text-xs text-slate-500 flex items-center gap-1.5 font-medium">
+                            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                            นำทางด้วยพิกัด/หมุดจริงของแต่ละศูนย์ ครอบคลุมทั้งจังหวัดนครราชสีมา
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Clock & API Button -->
+                <div class="flex items-center gap-3">
+                    <div id="liveClock" class="hidden md:flex flex-col items-end px-3.5 py-1.5 rounded-xl bg-slate-100/80 border border-slate-200 text-slate-700">
+                        <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider" id="clockDate">--/--/----</span>
+                        <span class="text-sm font-bold font-mono text-brand-600" id="clockTime">00:00:00</span>
+                    </div>
+
+                    <button id="locBtn" onclick="requestLocation()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium transition duration-200 border border-slate-200" title="ใช้ตำแหน่งของฉันเป็นจุดเริ่มต้นนำทาง">
+                        <i id="locIcon" class="fa-solid fa-location-crosshairs text-brand-600"></i>
+                        <span id="locLabel" class="hidden sm:inline">ตำแหน่งของฉัน</span>
+                    </button>
+
+                    <button id="themeBtn" onclick="toggleTheme()" class="flex items-center justify-center w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition duration-200 border border-slate-200" title="สลับโหมดสว่าง / มืด" aria-label="สลับโหมดสว่าง / มืด">
+                        <i id="themeIcon" class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <button onclick="toggleApiModal()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium transition duration-200 border border-slate-200" title="ตั้งค่า Google API Key">
+                        <i class="fa-solid fa-key text-amber-500"></i>
+                        <span class="hidden sm:inline">Google API Key</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+        <!-- Top Banner / Live Summary Widget -->
+        <div class="mb-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-72 h-72 rounded-full bg-emerald-500/10 blur-3xl"></div>
+            <div class="absolute right-1/3 -top-10 w-60 h-60 rounded-full bg-brand-500/10 blur-3xl"></div>
+            
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                <div class="md:col-span-2">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                            <i class="fa-solid fa-bolt"></i> โชว์รูมรถยนต์ EV & สันดาป <span id="heroCount">0</span> แห่ง
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                            <i class="fa-solid fa-location-dot"></i> ปักหมุดตรงศูนย์ตามข้อมูลดีลเลอร์
+                        </span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
+                        เช็คโชว์รูมเปิด-ปิด พร้อมนำทางทันที
+                    </h2>
+                    <p class="text-slate-300 text-sm font-light leading-relaxed">
+                        ตรวจสอบการเปิดทำการตามเวลาประเทศไทยแบบ Real-time ของศูนย์ใน อ.เมืองนครราชสีมา, ปากช่อง, โชคชัย, พิมาย, สีคิ้ว, ปักธงชัย, ด่านขุนทด, โนนสูง, สีดา, ครบุรี พร้อมปุ่มนำทางเข้า Google Maps ตรงหมุดของแต่ละสาขา
+                    </p>
+                </div>
+                
+                <div class="md:col-span-2 grid grid-cols-3 gap-3">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 p-3 sm:p-4 rounded-2xl text-center">
+                        <div class="text-slate-300 text-xs mb-1">โชว์รูมทั้งหมด</div>
+                        <div id="statTotal" class="text-xl sm:text-2xl font-bold text-white">0</div>
+                    </div>
+                    <div class="bg-emerald-500/20 backdrop-blur-md border border-emerald-500/30 p-3 sm:p-4 rounded-2xl text-center">
+                        <div class="text-emerald-300 text-xs mb-1">เปิดทำการตอนนี้</div>
+                        <div id="statOpen" class="text-xl sm:text-2xl font-bold text-emerald-400">0</div>
+                    </div>
+                    <div class="bg-rose-500/20 backdrop-blur-md border border-rose-500/30 p-3 sm:p-4 rounded-2xl text-center">
+                        <div class="text-rose-300 text-xs mb-1">ยังไม่เปิด/ปิดแล้ว</div>
+                        <div id="statClosed" class="text-xl sm:text-2xl font-bold text-rose-400">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Controls Area -->
+        <section class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200/80 mb-8 space-y-4">
+            
+            <!-- Department switch -->
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">ดูเวลา/สถานะของ</span>
+                <div class="grid grid-cols-2 gap-1 p-1 rounded-xl bg-slate-100 sm:w-96">
+                    <button id="deptBtnSales" onclick="setDept('sales')" class="px-3 py-2 rounded-lg text-sm font-semibold transition"></button>
+                    <button id="deptBtnService" onclick="setDept('service')" class="px-3 py-2 rounded-lg text-sm font-semibold transition"></button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+                <input type="text" id="searchInput" placeholder="ค้นหาชื่อโชว์รูม, แบรนด์ (Toyota, Honda, BYD, GWM, Benz, BMW, NETA...) หรือพื้นที่ (มิตรภาพ, จอหอ, ปากช่อง, โชคชัย)..." 
+                       class="w-full pl-11 pr-10 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition duration-150 text-sm text-slate-800 placeholder-slate-400">
+                <button id="clearSearch" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Filters Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                
+                <!-- Fuel Type Filter -->
+                <div>
+                    <label for="fuelFilter" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">ประเภทพลังงาน</label>
+                    <div class="relative">
+                        <select id="fuelFilter" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white pr-8">
+                            <option value="ALL">ทุกประเภทพลังงาน</option>
+                            <option value="EV">⚡ รถไฟฟ้า 100% (EV)</option>
+                            <option value="HYBRID">🔋 ไฮบริด (Hybrid / PHEV)</option>
+                            <option value="ICE">⛽ น้ำมัน / เครื่องยนต์ทั่วไป</option>
+                            <option value="MIXED">🔌 มีทั้ง EV และน้ำมัน (MG, BMW, Benz)</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div>
+                    <label for="brandFilter" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">ยี่ห้อรถยนต์</label>
+                    <div class="relative">
+                        <select id="brandFilter" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white pr-8">
+                            <option value="ALL">ทุกยี่ห้อ (All Brands)</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- District Filter -->
+                <div>
+                    <label for="districtFilter" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">พื้นที่ / อำเภอ</label>
+                    <div class="relative">
+                        <select id="districtFilter" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white pr-8">
+                            <option value="ALL">ทุกอำเภอในนครราชสีมา</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- Sort -->
+                <div>
+                    <label for="sortSelect" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">เรียงลำดับ</label>
+                    <div class="relative">
+                        <select id="sortSelect" onchange="setSort(this.value)" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white pr-8">
+                            <option value="default">ตามยี่ห้อ (ค่าเริ่มต้น)</option>
+                            <option value="nearest" disabled>📍 ใกล้ฉันที่สุด (กด "ตำแหน่งของฉัน")</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- Open Now Toggle Button -->
+                <div class="flex items-end">
+                    <label class="flex items-center gap-3 w-full h-[42px] px-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer transition duration-150 select-none">
+                        <input type="checkbox" id="openNowToggle" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300">
+                        <span class="text-sm font-medium text-slate-700 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            เฉพาะโชว์รูม "เปิดอยู่ตอนนี้"
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showrooms List / Grid -->
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-store text-brand-600"></i>
+                    รายการโชว์รูม <span id="showroomCount" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-100 text-brand-700">0 รายการ</span>
+                </h3>
+            </div>
+
+            <div id="photoHint" class="hidden mb-4 p-3 rounded-xl border border-amber-200 bg-amber-50 text-amber-700 text-xs leading-relaxed"></div>
+
+            <!-- Grid Cards -->
+            <div id="showroomsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards populated dynamically -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-slate-300 p-8">
+                <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+                    <i class="fa-solid fa-car-tunnel"></i>
+                </div>
+                <h4 class="text-lg font-semibold text-slate-700 mb-1">ไม่พบข้อมูลโชว์รูมตามเงื่อนไข</h4>
+                <p class="text-slate-500 text-sm max-w-md mx-auto mb-4">ลองปรับเปลี่ยนคำค้นหา หรือล้างการกรองเพื่อค้นหาโชว์รูมใหม่อีกครั้ง</p>
+                <button onclick="resetFilters()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded-xl transition duration-150">
+                    ล้างการกรองทั้งหมด
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail Modal with Accurate Map Embed and Pin Link -->
+    <div id="detailModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+        <div class="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 p-6 sm:p-8 transform scale-95 transition-transform duration-200" id="modalContainer">
+            
+            <div class="flex items-start justify-between border-b border-slate-100 pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                    <img id="modalLogoImg" src="" alt="Logo" class="w-12 h-12 rounded-2xl bg-slate-50 p-1.5 border border-slate-200 object-contain">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span id="modalBrand" class="inline-block px-2.5 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-600">BRAND</span>
+                            <span id="modalFuelBadgeWrap"></span>
+                        </div>
+                        <h3 id="modalTitle" class="text-xl font-bold text-slate-900">ชื่อโชว์รูม</h3>
+                    </div>
+                </div>
+                <button onclick="closeDetailModal()" class="text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100 transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="space-y-5">
+                
+                <div id="modalPhoto"></div>
+
+                <div id="modalTabs" class="grid grid-cols-2 gap-1 p-1 rounded-xl bg-slate-100"></div>
+
+                <!-- Status & Address -->
+                <div class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                    <span class="text-sm font-medium text-slate-500">สถานะเปิด-ปิดวันนี้:</span>
+                    <span id="modalStatusBadge" class="px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
+                        --
+                    </span>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">ที่อยู่และตำแหน่งสถานที่</h4>
+                    <p id="modalAddress" class="text-sm text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        --
+                    </p>
+                    <div id="modalVerify" class="mt-2"></div>
+                </div>
+
+                <!-- Google Maps Embed Preview -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">แผนที่ตั้งศูนย์ (Google Maps Preview)</h4>
+                        <a id="modalMapPinDirect" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-brand-600 hover:underline flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> เปิดใน Google Maps
+                        </a>
+                    </div>
+                    <div class="w-full h-52 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100 relative">
+                        <iframe id="modalMapIframe" width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src=""></iframe>
+                    </div>
+                </div>
+
+                <p id="modalOriginNote" class="text-[11px] text-slate-500 -mt-2"></p>
+
+                <!-- Opening Hours Table -->
+                <div>
+                    <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">ตารางเวลาเปิด-ปิดทำการ (7 วัน)</h4>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden divide-y divide-slate-100 bg-white">
+                        <div id="scheduleContainer" class="text-sm">
+                            <!-- Hours Rows -->
+                        </div>
+                    </div>
+                    <p id="scheduleNote" class="text-[11px] text-amber-600 mt-2"></p>
+                </div>
+
+                <div id="deptExtras" class="space-y-3">
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">แชร์ตำแหน่งโชว์รูม</h4>
+                    <div id="shareRow" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <a id="modalPhoneBtn" href="#" class="flex items-center justify-center gap-2 px-4 py-3 bg-slate-800 hover:bg-slate-900 text-white font-medium rounded-xl text-sm transition shadow-md">
+                        <i class="fa-solid fa-phone text-emerald-400"></i>
+                        <span>โทรสอบถามทันที</span>
+                    </a>
+                    <a id="modalNavBtn" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl text-sm transition shadow-md shadow-brand-600/20">
+                        <i class="fa-solid fa-diamond-turn-right text-white"></i>
+                        <span>เริ่มนำทาง (Directions)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Key Config Modal -->
+    <div id="apiModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2 text-amber-500 font-bold text-lg">
+                    <i class="fa-solid fa-key"></i>
+                    <h3 class="text-slate-900">ตั้งค่า Google Places API Key</h3>
+                </div>
+                <button onclick="toggleApiModal()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+                ใช้ดึง<b>รูปโชว์รูมจริงจาก Google Maps</b> ให้ทุกสาขา — ต้องเปิดใช้ <b>Places API (New)</b> ในโปรเจกต์ Google Cloud ของคุณ ถ้าไม่ใส่ ระบบจะแสดงภาพแทนตามยี่ห้อ ส่วนแผนที่และการนำทางใช้งานได้ตามปกติ คีย์ถูกเก็บในเบราว์เซอร์ของคุณเท่านั้น
+            </p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Google Places API Key</label>
+                    <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button onclick="toggleApiModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition">
+                        ยกเลิก
+                    </button>
+                    <button onclick="saveApiKey()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-medium rounded-xl transition shadow-md shadow-brand-500/20">
+                        บันทึกการตั้งค่า
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 bg-white py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400 space-y-1">
+            <p>© 2026 ระบบเช็คสถานะ & นำทางโชว์รูมรถยนต์ และ EV จังหวัดนครราชสีมา (Khorat Showroom Portal)</p>
+            <p class="text-slate-400/80">ข้อมูลพิกัด/หมุด/เวลาเปิด-ปิดรวบรวมจากข้อมูลดีลเลอร์ที่เผยแพร่ (เช่น 9carthai.com ซึ่งไม่ใช่เจ้าของศูนย์) — เวลาที่ติดป้าย "โดยประมาณ" และศูนย์ที่ยังไม่มีพิกัดยืนยัน ควรโทรหรือเช็ค Google Maps ก่อนเดินทาง</p>
+        </div>
+    </footer>
+
+    <!-- App Logic Script -->
+    <script>
+        // ================= Map / Navigation helpers =================
+        // ลำดับความแม่นยำของหมุด:
+        //  1) coord = มีพิกัด lat,lng จริง  -> นำทางด้วย destination=lat,lng (ตรงจุด 100%)
+        //  2) pin   = มีลิงก์หมุดจาก Google Maps ของศูนย์นั้น -> เปิดหมุดจริงโดยตรง
+        //  3) name  = ยังไม่มีพิกัด -> ค้นหาด้วยชื่อศูนย์ + นครราชสีมา
+        function hasCoord(s) { return typeof s.lat === 'number' && typeof s.lng === 'number'; }
+
+        function destOf(s) { return hasCoord(s) ? `${s.lat},${s.lng}` : s.query; }
+
+        function getDirectionsUrl(s) {
+            let url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destOf(s))}&travelmode=driving`;
+            // จุดเริ่มต้น = ตำแหน่งของผู้ใช้ (ถ้าไม่ทราบ Google Maps จะใช้ตำแหน่งปัจจุบันของอุปกรณ์เอง)
+            if (userLoc) url += `&origin=${userLoc.lat},${userLoc.lng}`;
+            return url;
+        }
+
+        function getPinUrl(s) {
+            if (hasCoord(s)) return `https://www.google.com/maps/search/?api=1&query=${s.lat},${s.lng}`;
+            if (s.pin) return `https://maps.app.goo.gl/${s.pin}`;
+            return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.query)}`;
+        }
+
+        function getEmbedMapUrl(s) {
+            if (userLoc) { // แผนที่แสดงเส้นทางจากตำแหน่งฉัน -> โชว์รูม
+                return `https://maps.google.com/maps?saddr=${userLoc.lat},${userLoc.lng}&daddr=${encodeURIComponent(destOf(s))}&dirflg=d&hl=th&output=embed`;
+            }
+            if (hasCoord(s)) {
+                return `https://maps.google.com/maps?q=${s.lat},${s.lng}(${encodeURIComponent(s.name.replace(/[()]/g, ' '))})&z=17&ie=UTF8&iwloc=B&hl=th&output=embed`;
+            }
+            return `https://maps.google.com/maps?q=${encodeURIComponent(s.query)}&z=16&ie=UTF8&iwloc=B&hl=th&output=embed`;
+        }
+
+        // ================= ตำแหน่งของฉัน =================
+        let userLoc = null;
+        let currentModalItem = null;
+
+        function setLocStatus(state, msg) {
+            const icon = document.getElementById('locIcon');
+            const label = document.getElementById('locLabel');
+            const btn = document.getElementById('locBtn');
+            if (!icon) return;
+            icon.className = 'fa-solid text-brand-600 ' + (state === 'loading' ? 'fa-spinner fa-spin' : state === 'ok' ? 'fa-location-dot text-emerald-500' : 'fa-location-crosshairs');
+            label.textContent = state === 'ok' ? 'ใช้ตำแหน่งของคุณแล้ว' : state === 'loading' ? 'กำลังหาตำแหน่ง…' : (msg || 'ตำแหน่งของฉัน');
+            btn.title = state === 'error' ? (msg || 'หาตำแหน่งไม่ได้') + ' — กดเพื่อลองใหม่' : 'ใช้ตำแหน่งของฉันเป็นจุดเริ่มต้นนำทาง';
+        }
+
+        function requestLocation() {
+            if (!navigator.geolocation) { setLocStatus('error', 'เบราว์เซอร์ไม่รองรับตำแหน่ง'); return; }
+            setLocStatus('loading');
+            navigator.geolocation.getCurrentPosition(pos => {
+                const firstFix = !userLoc;
+                userLoc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+                setLocStatus('ok');
+                const opt = document.querySelector('#sortSelect option[value="nearest"]');
+                if (opt) { opt.disabled = false; opt.textContent = '📍 ใกล้ฉันที่สุด'; }
+                if (firstFix) { sortMode = 'nearest'; document.getElementById('sortSelect').value = 'nearest'; }
+                renderApp();
+                if (currentModalItem) updateModalMap(currentModalItem);
+            }, err => {
+                setLocStatus('error', err.code === 1 ? 'ไม่ได้อนุญาตตำแหน่ง' : 'หาตำแหน่งไม่ได้');
+            }, { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
+        }
+
+        function distanceKm(s) {
+            if (!userLoc || !hasCoord(s)) return null;
+            const R = 6371, toRad = x => x * Math.PI / 180;
+            const dLat = toRad(s.lat - userLoc.lat), dLng = toRad(s.lng - userLoc.lng);
+            const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(userLoc.lat)) * Math.cos(toRad(s.lat)) * Math.sin(dLng / 2) ** 2;
+            return 2 * R * Math.asin(Math.sqrt(a));
+        }
+
+        function distanceBadge(s) {
+            const d = distanceKm(s);
+            if (d === null) return '';
+            return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200" title="ระยะทางเส้นตรงจากตำแหน่งของคุณ"><i class="fa-solid fa-route"></i> ห่าง ~${d < 10 ? d.toFixed(1) : Math.round(d)} กม.</span>`;
+        }
+
+        function updateModalMap(item) {
+            document.getElementById('modalNavBtn').href = getDirectionsUrl(item);
+            document.getElementById('modalMapIframe').src = getEmbedMapUrl(item);
+            document.getElementById('modalOriginNote').textContent = userLoc
+                ? '* แผนที่แสดงเส้นทางโดยเริ่มจากตำแหน่งของคุณ'
+                : '* ยังไม่ทราบตำแหน่งของคุณ — กดปุ่ม "ตำแหน่งของฉัน" ด้านบน เพื่อให้แผนที่เริ่มเส้นทางจากคุณ';
+        }
+
+        // ================= โหมดสว่าง / มืด =================
+        function updateThemeIcon() {
+            const dark = document.documentElement.classList.contains('dark');
+            const icon = document.getElementById('themeIcon');
+            if (icon) icon.className = 'fa-solid ' + (dark ? 'fa-sun text-amber-400' : 'fa-moon');
+        }
+        function toggleTheme() {
+            const dark = document.documentElement.classList.toggle('dark');
+            try { localStorage.setItem('korat_theme', dark ? 'dark' : 'light'); } catch (e) { /* ignore */ }
+            updateThemeIcon();
+        }
+
+        // ================= รูปโชว์รูม (Google Places API New) =================
+        const photoCache = {};   // id -> url | null
+        const photoState = {};   // id -> 'queued' | 'loading' | 'done'
+        const photoQueue = [];
+        let photoActive = 0;
+        let photoError = '';
+
+        const PH_COLORS = { EV: ['#059669', '#0f766e'], MIXED: ['#7c3aed', '#4f46e5'], HYBRID: ['#0284c7', '#1d4ed8'], ICE: ['#475569', '#1e293b'] };
+
+        function photoBoxHtml(item, heightCls, roundCls, extraCls) {
+            const url = photoCache[item.id];
+            const [c1, c2] = PH_COLORS[item.fuelType] || PH_COLORS.ICE;
+            const inner = url
+                ? `<img src="${url}" alt="${escapeHtml(item.name)}" loading="lazy" class="photo-img w-full h-full object-cover" onerror="this.parentNode.dataset.failed='1';this.remove()">
+                   <span class="absolute bottom-1.5 right-2 text-[10px] text-white/90 bg-black/40 px-1.5 py-0.5 rounded"><i class="fa-brands fa-google mr-1"></i>Google Maps</span>`
+                : `<div class="w-full h-full flex flex-col items-center justify-center gap-2 text-white" style="background:linear-gradient(135deg,${c1},${c2})">
+                       <img src="${item.logo}" alt="" class="w-12 h-12 rounded-xl bg-white/90 p-2 object-contain" onerror="this.style.display='none'">
+                       <span class="text-xs font-semibold tracking-wide opacity-90">${escapeHtml(BRAND_LABEL[item.brand] || item.brand)} • ${escapeHtml(item.district)}</span>
+                   </div>`;
+            return `<div class="relative overflow-hidden ${heightCls} ${roundCls} ${extraCls || ''}" data-photo-box="${item.id}">${inner}</div>`;
+        }
+
+        function cardPhotoHtml(item) { return photoBoxHtml(item, 'h-36', 'rounded-t-2xl', '-mx-5 -mt-5 mb-4'); }
+
+        function refreshPhotoBoxes(item) {
+            document.querySelectorAll(`[data-photo-box="${item.id}"]`).forEach(el => {
+                const isModal = el.parentNode && el.parentNode.id === 'modalPhoto';
+                const tmp = document.createElement('div');
+                tmp.innerHTML = isModal ? photoBoxHtml(item, 'h-44', 'rounded-2xl', 'border border-slate-200') : cardPhotoHtml(item);
+                el.replaceWith(tmp.firstElementChild);
+            });
+        }
+
+        async function fetchPhotoUrl(item) {
+            const body = { textQuery: item.query, languageCode: 'th', maxResultCount: 1 };
+            body.locationBias = { circle: { center: { latitude: hasCoord(item) ? item.lat : 14.97, longitude: hasCoord(item) ? item.lng : 102.10 }, radius: hasCoord(item) ? 400 : 40000 } };
+            const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': apiKey, 'X-Goog-FieldMask': 'places.displayName,places.photos' },
+                body: JSON.stringify(body)
+            });
+            if (!res.ok) {
+                let msg = `HTTP ${res.status}`;
+                try { const j = await res.json(); msg = (j.error && j.error.message) || msg; } catch (e) { /* ignore */ }
+                throw new Error(msg);
+            }
+            const data = await res.json();
+            const photo = data.places && data.places[0] && data.places[0].photos && data.places[0].photos[0];
+            if (!photo) return null;
+            return `https://places.googleapis.com/v1/${photo.name}/media?maxHeightPx=420&maxWidthPx=800&key=${encodeURIComponent(apiKey)}`;
+        }
+
+        function pumpPhotos() {
+            while (photoActive < 4 && photoQueue.length) {
+                const item = photoQueue.shift();
+                photoState[item.id] = 'loading';
+                photoActive++;
+                fetchPhotoUrl(item).then(url => { photoCache[item.id] = url; })
+                    .catch(err => { photoCache[item.id] = null; photoError = err.message; })
+                    .finally(() => {
+                        photoState[item.id] = 'done';
+                        photoActive--;
+                        refreshPhotoBoxes(item);
+                        updatePhotoHint();
+                        pumpPhotos();
+                    });
+            }
+        }
+
+        function queuePhotos(items) {
+            if (!apiKey) return;
+            items.forEach(i => { if (!photoState[i.id]) { photoState[i.id] = 'queued'; photoQueue.push(i); } });
+            pumpPhotos();
+        }
+
+        function updatePhotoHint() {
+            const el = document.getElementById('photoHint');
+            if (!el) return;
+            if (!apiKey) {
+                el.innerHTML = '<i class="fa-solid fa-image mr-1"></i> ตอนนี้แสดงภาพแทนตามยี่ห้อ — ใส่ <b>Google API Key</b> (เปิด Places API New) เพื่อดึงรูปโชว์รูมจริงของทุกสาขา <button onclick="toggleApiModal()" class="underline font-semibold ml-1">ตั้งค่าคีย์</button>';
+                el.classList.remove('hidden');
+            } else if (photoError) {
+                el.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> ดึงรูปบางส่วนไม่สำเร็จ: ${escapeHtml(photoError)} — ตรวจสอบว่าเปิด Places API (New) และคีย์ไม่ถูกจำกัดสิทธิ์`;
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // ================= Hours helpers =================
+        // days: 0=อาทิตย์ ... 6=เสาร์ | ค่า: {open,close} | 'CALL' (โทรสอบถาม) | null (ปิด)
+        function hrs(open, close, openDays, callDays) {
+            const h = {};
+            for (let d = 0; d < 7; d++) {
+                if ((openDays || []).includes(d)) h[d] = { open, close };
+                else if ((callDays || []).includes(d)) h[d] = 'CALL';
+                else h[d] = null;
+            }
+            return h;
+        }
+        const ALL = [0, 1, 2, 3, 4, 5, 6];
+        const MON_SAT = [1, 2, 3, 4, 5, 6];
+        const MON_FRI = [1, 2, 3, 4, 5];
+
+        const BRAND_LOGO = {
+            Toyota: 'toyota.co.th', Honda: 'honda.co.th', Isuzu: 'isuzu-tis.com', Nissan: 'nissan.co.th',
+            Mitsubishi: 'mitsubishi-motors.co.th', Mazda: 'mazda.co.th', Ford: 'ford.co.th', MG: 'mgcars.com',
+            BYD: 'byd.com', GWM: 'gwm.co.th', AION: 'aion.co.th', NETA: 'neta.co.th', Deepal: 'deepal.co.th',
+            BMW: 'bmw.co.th', Benz: 'mercedes-benz.co.th'
+        };
+        const BRAND_LABEL = { Toyota: 'TOYOTA', Honda: 'HONDA', Isuzu: 'ISUZU', Nissan: 'NISSAN', Mitsubishi: 'MITSUBISHI',
+            Mazda: 'MAZDA', Ford: 'FORD', MG: 'MG', BYD: 'BYD', GWM: 'GWM', AION: 'AION', NETA: 'NETA', Deepal: 'DEEPAL',
+            BMW: 'BMW', Benz: 'Mercedes-Benz' };
+
+        // สร้างรายการโชว์รูม
+        function S(brand, fuelType, branch, district, o) {
+            const label = BRAND_LABEL[brand] || brand;
+            const base = {
+                id: `${brand.toLowerCase()}-${branch.replace(/[^\wก-๙]+/g, '-')}-${Math.random().toString(36).slice(2, 6)}`,
+                brand, fuelType, district,
+                name: `${label} ${branch}`,
+                query: `${label} ${branch} นครราชสีมา`,
+                logo: `https://www.google.com/s2/favicons?domain=${BRAND_LOGO[brand] || 'google.com'}&sz=64`,
+                address: null, phone: null, landmark: null,
+                hoursEstimated: false, hoursNote: ''
+            };
+            const s = Object.assign(base, o);
+            s.verified = hasCoord(s) ? 'coord' : (s.pin ? 'pin' : 'name');
+            if (!s.hours) { // ไม่มีข้อมูลเวลา -> ใช้เวลาโดยประมาณ และติดป้ายให้ชัด
+                s.hours = hrs('08:30', '17:00', MON_SAT, [0]);
+                s.hoursEstimated = true;
+            }
+            return s;
+        }
+
+        const NOTE_SVC = 'เวลาตามข้อมูลศูนย์บริการ';
+
+        const SHOWROOMS_DATABASE = [
+            // ---------- TOYOTA (พิกัดจริงจาก 9carthai) ----------
+            S('Toyota', 'HYBRID', 'ในเมือง นครราชสีมา (ถ.มิตรภาพ ใกล้แยกนครราชสีมา)', 'เมืองนครราชสีมา', { lat: 14.978799, lng: 102.071861, hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC, hoursEstimated: true }),
+            S('Toyota', 'HYBRID', 'บ้านเกาะ นครราชสีมา', 'เมืองนครราชสีมา', { lat: 15.009250, lng: 102.125209, landmark: 'ใกล้โกลบอลเฮ้าส์ สาขานครราชสีมา', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'จอหอ นครราชสีมา', 'เมืองนครราชสีมา', { lat: 15.047576, lng: 102.117734, landmark: 'ใกล้ศูนย์การศึกษาพิเศษ เขตการศึกษา 11', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'ปรุใหญ่ นครราชสีมา', 'เมืองนครราชสีมา', { lat: 14.932744, lng: 102.054757, landmark: 'ใกล้สวนเฉลิมพระเกียรติ (ถ.ราชสีมา–ปักธงชัย)', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'โคกกรวด นครราชสีมา', 'เมืองนครราชสีมา', { lat: 14.928415, lng: 101.970427, landmark: 'ทางคู่ขนานถนนมิตรภาพ ใกล้ทล.1020', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'โชคชัย (โตโยต้าโคราช 1988)', 'โชคชัย', { lat: 14.740429, lng: 102.157085, address: '270 หมู่ 13 ถ.โชคชัย–สีคิ้ว ต.โชคชัย อ.โชคชัย จ.นครราชสีมา 30190', phone: '044-294-444', landmark: 'ใกล้โลตัส โชคชัย', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'ปักธงชัย นครราชสีมา', 'ปักธงชัย', { lat: 14.763520, lng: 102.038679, landmark: 'ใกล้สี่แยกปักธงชัย', hours: hrs('08:00', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'สีคิ้ว นครราชสีมา', 'สีคิ้ว', { lat: 14.865500, lng: 101.710968, landmark: 'ระหว่างซอยเทศบาล 21–25 ถ.มิตรภาพ', hours: hrs('08:00', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'ด่านขุนทด นครราชสีมา', 'ด่านขุนทด', { lat: 15.168260, lng: 101.738478, landmark: 'ถ.ชัยภูมิ–สีคิ้ว ใกล้บิ๊กซี ด่านขุนทด', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'โนนสูง นครราชสีมา', 'โนนสูง', { lat: 15.250934, lng: 102.398356, landmark: 'ใกล้โรงเรียนอนุบาลตลาดแค', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+            S('Toyota', 'HYBRID', 'สีดา นครราชสีมา', 'สีดา', { lat: 15.542556, lng: 102.546739, landmark: 'ใกล้แยกสีดา', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC, hoursEstimated: true }),
+            S('Toyota', 'HYBRID', 'ปากช่อง (ถ.มิตรภาพสายเก่า)', 'ปากช่อง', { lat: 14.694189, lng: 101.405904, landmark: 'ใกล้โรงพยาบาลปากช่องนานา', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC, hoursEstimated: true }),
+            S('Toyota', 'HYBRID', 'ปากช่อง (กลางดง)', 'ปากช่อง', { lat: 14.637568, lng: 101.258622, landmark: 'ฝั่งตรงข้ามเทศบาลตำบลกลางดง', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC, hoursEstimated: true }),
+            S('Toyota', 'HYBRID', 'ครบุรี นครราชสีมา', 'ครบุรี', { lat: 14.534276, lng: 102.232038, landmark: 'ถ.ราชสีมา–โชคชัย ใกล้โรงเรียนบุญณดาวิทยา', hours: hrs('08:00', '17:00', ALL), hoursNote: NOTE_SVC }),
+
+            // ---------- HONDA (พิกัดจริงจาก 9carthai) ----------
+            S('Honda', 'HYBRID', 'หัวทะเล นครราชสีมา', 'เมืองนครราชสีมา', { lat: 14.955378, lng: 102.120706, landmark: 'ถ.ราชสีมา–โชคชัย ฝั่งตรงข้ามโลตัส โคราช 2', hours: hrs('08:00', '17:00', MON_SAT) }),
+            S('Honda', 'HYBRID', 'ในเมือง (ถ.มิตรภาพ ตรงข้ามเดอะมอลล์โคราช)', 'เมืองนครราชสีมา', { lat: 14.979136, lng: 102.077982, hours: hrs('08:00', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Honda', 'HYBRID', 'ในเมือง (ตรงข้ามตลาดเซฟวัน)', 'เมืองนครราชสีมา', { lat: 14.958688, lng: 102.045799, landmark: 'ทางคู่ขนานมิตรภาพ หน้าวัดราชสีมาราม', hours: hrs('08:00', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Honda', 'HYBRID', 'เมือง นครราชสีมา (ซอยมิตรภาพ 10–12)', 'เมืองนครราชสีมา', { lat: 14.962724, lng: 102.062944, hours: hrs('08:00', '17:00', MON_SAT), hoursEstimated: true }),
+            S('Honda', 'HYBRID', 'จอหอ นครราชสีมา', 'เมืองนครราชสีมา', { lat: 15.015456, lng: 102.129881, landmark: 'ใกล้โลตัส จอหอ', hours: hrs('08:00', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Honda', 'HYBRID', 'ปากช่อง นครราชสีมา', 'ปากช่อง', { lat: 14.687884, lng: 101.405079, landmark: 'ใกล้โรงพยาบาลปากช่องนานา', hours: hrs('08:00', '17:00', MON_SAT), hoursEstimated: true }),
+            S('Honda', 'HYBRID', 'สีดา นครราชสีมา', 'สีดา', { lat: 15.570464, lng: 102.553985, landmark: 'ใกล้วัดบ่อไก่แก้ว', hours: hrs('08:00', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+
+            // ---------- ISUZU (พิกัดจริงจาก 9carthai) ----------
+            S('Isuzu', 'ICE', 'โชคชัย นครราชสีมา', 'โชคชัย', { lat: 14.740104, lng: 102.153917, landmark: 'ถ.โชคชัย–เดชอุดม ใกล้ รพ.โชคชัย', hours: hrs('08:30', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Isuzu', 'ICE', 'ปากช่อง นครราชสีมา', 'ปากช่อง', { lat: 14.682715, lng: 101.401800, landmark: 'ใกล้โลตัส ปากช่อง–เขาใหญ่', hours: hrs('08:00', '17:30', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Isuzu', 'ICE', 'ในเมือง นครราชสีมา (ใกล้บิ๊กซี)', 'เมืองนครราชสีมา', { lat: 14.979470, lng: 102.073244, hours: hrs('08:30', '17:30', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Isuzu', 'ICE', 'จอหอ นครราชสีมา', 'เมืองนครราชสีมา', { lat: 15.047485, lng: 102.116701, landmark: 'ถนนสาย 204 ใกล้ไทวัสดุ', hours: hrs('08:30', '17:00', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Isuzu', 'ICE', 'สีดา นครราชสีมา', 'สีดา', { lat: 15.539471, lng: 102.546524, landmark: 'ถ.มิตรภาพ ใกล้ศูนย์บริการฮอนด้า', hoursEstimated: true }),
+            S('Isuzu', 'ICE', 'พิมาย นครราชสีมา', 'พิมาย', { lat: 15.217844, lng: 102.485052, landmark: 'ถนนสาย 206 ใกล้โลตัส พิมาย', hours: hrs('08:30', '17:30', MON_SAT), hoursNote: NOTE_SVC }),
+            S('Isuzu', 'ICE', 'เมือง นครราชสีมา (ถ.มิตรภาพ)', 'เมืองนครราชสีมา', { lat: 14.979317, lng: 102.085518, hours: hrs('08:00', '17:30', MON_SAT), hoursNote: NOTE_SVC }),
+
+            // ---------- NISSAN (หมุดจริงจากลิงก์ Google Maps ของศูนย์) ----------
+            S('Nissan', 'HYBRID', 'หัวทะเล นครราชสีมา', 'เมืองนครราชสีมา', { pin: '6WtzJdm7tAjXXGyw9', landmark: 'แยกหัวทะเล ถ.เพชรมาตุคลา' }),
+            S('Nissan', 'HYBRID', 'บ้านใหม่ นครราชสีมา', 'เมืองนครราชสีมา', { pin: 'oEcQFfDfWMbtN5mD7', landmark: 'ถ.มิตรภาพ ใกล้ตลาดเซฟวัน' }),
+            S('Nissan', 'HYBRID', 'ในเมือง นครราชสีมา', 'เมืองนครราชสีมา', { pin: 'ypC3zfx1ZxefB8xYA', landmark: 'ใกล้เทอร์มินอล 21 โคราช' }),
+            S('Nissan', 'HYBRID', 'ปากช่อง นครราชสีมา', 'ปากช่อง', { pin: 'D97vA8rmHvqvyYcXA', landmark: 'ถ.มิตรภาพสายเก่า ใกล้ รพ.กรุงเทพ ปากช่อง' }),
+
+            // ---------- MITSUBISHI (หมุดจริงจากลิงก์ Google Maps ของศูนย์) ----------
+            S('Mitsubishi', 'ICE', 'บ้านใหม่ นครราชสีมา', 'เมืองนครราชสีมา', { pin: '96QRG8rtZwqWJUu68', landmark: 'ซอยมุขมนตรี 37 ใกล้วิทยาลัยนครราชสีมา', hours: hrs('08:30', '17:00', MON_FRI, [0, 6]), hoursNote: 'เสาร์–อาทิตย์ โทรสอบถาม' }),
+            S('Mitsubishi', 'ICE', 'มิตรภาพ นครราชสีมา', 'เมืองนครราชสีมา', { pin: 'ihcmvpJyQo7q8Ww68', landmark: 'ใกล้มหาวิทยาลัยราชภัฏนครราชสีมา', hours: hrs('08:30', '17:00', MON_FRI, [0, 6]), hoursNote: 'เสาร์–อาทิตย์ โทรสอบถาม' }),
+            S('Mitsubishi', 'ICE', 'จอหอ นครราชสีมา', 'เมืองนครราชสีมา', { pin: 'wxuhwx246vQ8KyN6A', landmark: 'ใกล้มหาวิทยาลัยวงษ์ชวลิตกุล', hours: hrs('08:30', '17:00', MON_FRI, [0, 6]), hoursNote: 'เสาร์–อาทิตย์ โทรสอบถาม', hoursEstimated: true }),
+            S('Mitsubishi', 'ICE', 'โชคชัย นครราชสีมา', 'โชคชัย', { pin: 'HfAyYQG2FEZrTW2b6', landmark: 'ใกล้โรงเรียนโชคชัยสามัคคี', hours: hrs('08:30', '17:00', MON_FRI, [0, 6]), hoursNote: 'เสาร์–อาทิตย์ โทรสอบถาม', hoursEstimated: true }),
+            S('Mitsubishi', 'ICE', 'ตลาดแค นครราชสีมา', 'โนนสูง', { pin: 'cDcC5ta6fUFpD4Nq7', landmark: 'ถนนหมายเลข 206 ใกล้โรงเรียนธารปราสาทเพชรวิทยา', hours: hrs('08:30', '17:00', MON_FRI, [0, 6]), hoursNote: 'เสาร์–อาทิตย์ โทรสอบถาม', hoursEstimated: true }),
+            S('Mitsubishi', 'ICE', 'ปากช่อง นครราชสีมา', 'ปากช่อง', { pin: 'K4h9YbG5Eq8rHY4A8', landmark: 'ใกล้โรงเรียนบุญเจริญวิทยา', hours: hrs('08:30', '17:00', MON_FRI, [0, 6]), hoursNote: 'เสาร์–อาทิตย์ โทรสอบถาม' }),
+            S('Mitsubishi', 'ICE', 'หนองสาหร่าย นครราชสีมา', 'ปากช่อง', { pin: 'aQyJraYPdMR3UhSh8', landmark: 'ใกล้วิทยาลัยเทคนิคปากช่อง', hours: hrs('08:30', '17:00', MON_FRI, [0, 6]), hoursNote: 'เสาร์–อาทิตย์ โทรสอบถาม', hoursEstimated: true }),
+
+            // ---------- MAZDA ----------
+            S('Mazda', 'ICE', 'เอกสหกรุ๊ป ในเมือง โคราช', 'เมืองนครราชสีมา', { pin: '82nP3aoCtABCMkzc7', phone: '044-049-868', landmark: 'ใกล้ตลาดเซฟวันโคราช', hours: hrs('08:00', '17:00', ALL) }),
+            S('Mazda', 'ICE', 'ในเมือง โคราช (ใกล้เทอร์มินอล 21)', 'เมืองนครราชสีมา', { pin: '7BY1w2769ZpT6NHR9', landmark: 'ถ.มิตรภาพ ห่างเทอร์มินอล 21 ~850 ม.' }),
+            S('Mazda', 'ICE', 'ปากช่อง โคราช', 'ปากช่อง', { pin: '9ARTJbJ4yzcZMfKU6', landmark: 'ถ.มิตรภาพสายเก่า ใกล้โรงเรียนบ้านปางแก' }),
+            S('Mazda', 'ICE', 'พิมาย โคราช', 'พิมาย', { pin: '2vm9WGnd6wyJvbfk7', landmark: 'ถ.มิตรภาพ ใกล้โรงเรียน กฟภ.สงเคราะห์ 3' }),
+
+            // ---------- FORD ----------
+            S('Ford', 'ICE', 'ปากช่อง (เอกสห กรุ๊ป)', 'ปากช่อง', { pin: 'Z72xhtYsWNV3Vnz77', address: '93/1 ถ.มิตรภาพ อ.ปากช่อง จ.นครราชสีมา 30130', phone: '044-049-828', hours: hrs('08:00', '17:00', ALL) }),
+            S('Ford', 'ICE', 'พิมาย (เอกสห กรุ๊ป)', 'พิมาย', { pin: 'iM946dN9Wk3H5TNT9', address: '199 หมู่ 4 อ.พิมาย จ.นครราชสีมา 30110', phone: '044-049-838', landmark: 'ใกล้โรงพยาบาลพิมาย', hours: hrs('08:00', '17:00', MON_SAT) }),
+
+            // ---------- MG ----------
+            S('MG', 'MIXED', 'ถนนมิตรภาพ นครราชสีมา', 'เมืองนครราชสีมา', { pin: 'JDGZMV1jHAzbwpz88', landmark: 'ถ.ราชสีมา–โชคชัย ใกล้โรงเรียนสุรนารีวิทยา' }),
+            S('MG', 'MIXED', 'บ้านเกาะ นครราชสีมา', 'เมืองนครราชสีมา', { pin: 'M1VwYNdVHwjcQqV4A', landmark: 'ทางคู่ขนานมิตรภาพ ใกล้ม.วงษ์ชวลิตกุล' }),
+            S('MG', 'MIXED', 'โชคชัย นครราชสีมา', 'โชคชัย', { pin: 'ZvSAdn4VZejbVcNh7', landmark: 'ใกล้โรงเรียนโชคชัยสามัคคี' }),
+            S('MG', 'MIXED', 'ปากช่อง นครราชสีมา', 'ปากช่อง', { pin: 'cAWrLvQdGUSCoLNa6', landmark: 'ถ.มิตรภาพสายเก่า ใกล้สวนสาธารณะเขาแคน' }),
+
+            // ---------- BYD ----------
+            S('BYD', 'EV', 'หนึ่ง โคราช สาขาจอหอ', 'เมืองนครราชสีมา', { lat: 15.009618, lng: 102.124528, landmark: 'ตรงข้ามศูนย์บริการโตโยต้า (ใกล้แม็คโคร นครราชสีมา)' }),
+            S('BYD', 'EV', 'หนึ่ง โคราช สาขาในเมือง', 'เมืองนครราชสีมา', { pin: 'dcNdAX2mPsn22ZkK8', landmark: 'ถ.มิตรภาพ ใกล้โตโยต้าเป็นหนึ่ง' }),
+            S('BYD', 'EV', 'NOVA โคราช', 'เมืองนครราชสีมา', { pin: 'og8NrieaTqGFcivg9', landmark: 'ถ.มิตรภาพ ใกล้โลตัส โคราช / ตลาดเซฟวัน' }),
+
+            // ---------- Premium ----------
+            S('Benz', 'MIXED', 'MB โคราช ออโตเฮาส์', 'เมืองนครราชสีมา', { pin: 'PYKsAXkmh3eubegLA', address: '1111 หมู่ 1 ต.สุรนารี อ.เมืองนครราชสีมา จ.นครราชสีมา 30000', phone: '089-845-5885', landmark: 'ทางคู่ขนานมิตรภาพ หน้าโรงเรียนราชสีมาวิทยาลัย', hours: hrs('08:00', '17:00', MON_SAT) }),
+            S('BMW', 'MIXED', 'Cherdchai Autohaus นครราชสีมา', 'เมืองนครราชสีมา', {}),
+
+            // ---------- แบรนด์ EV ที่ยังไม่มีพิกัดยืนยัน (ค้นหาตามชื่อ) ----------
+            S('GWM', 'EV', 'โคราช', 'เมืองนครราชสีมา', {}),
+            S('AION', 'EV', 'โคราช', 'เมืองนครราชสีมา', {}),
+            S('NETA', 'EV', 'โคราช', 'เมืองนครราชสีมา', {}),
+            S('Deepal', 'EV', 'โคราช', 'เมืองนครราชสีมา', {})
+        ];
+
+        // ================= แผนก: ฝ่ายขาย / ศูนย์บริการ =================
+        const DEPT_LABEL = { sales: 'ฝ่ายขาย', service: 'ศูนย์บริการ & อะไหล่' };
+        const DEPT_SHORT = { sales: 'ฝ่ายขาย', service: 'ศูนย์บริการ' };
+        let currentDept = 'sales';
+        let modalDept = 'sales';
+        let sortMode = 'default';
+
+        // เวลา "โดยประมาณ" ใช้เมื่อยังไม่มีข้อมูลของแผนกนั้นจากต้นทาง
+        const EST_HOURS = {
+            sales: () => hrs('08:30', '17:00', MON_SAT, [0]),
+            service: () => hrs('08:00', '17:00', MON_SAT, [])
+        };
+        // สาขาที่ต้นทางระบุเวลาโชว์รูมและศูนย์บริการชัดเจนทั้งคู่ (ทุกวัน 08:00–17:00)
+        const BOTH_KNOWN = ['โคกกรวด', 'ด่านขุนทด', 'โชคชัย (โตโยต้าโคราช 1988)'];
+
+        // ลิงก์ติดต่อเฉพาะสาขา (จากข้อมูลที่ต้นทางเผยแพร่)
+        const BRANCH_LINKS = [
+            { m: 'เอกสหกรุ๊ป ในเมือง', web: 'https://mazdaesg.com', fb: 'https://www.facebook.com/mazdaratchasima.esg/' },
+            { m: 'ปากช่อง (เอกสห กรุ๊ป)', web: 'https://www.fordesg.com', line: 'https://line.me/R/ti/p/@fordesg', fb: 'https://www.facebook.com/Fordpakchong' },
+            { m: 'พิมาย (เอกสห กรุ๊ป)', web: 'https://www.fordesg.com', line: 'https://line.me/R/ti/p/@fordesg', fb: 'https://www.facebook.com/FORDRANGER.ESGPHIMAI' },
+            { m: 'MB โคราช', web: 'https://www.mbkorat.mercedes-benz.co.th/', line: 'https://line.me/ti/p/~@mbkorat' },
+            { m: 'HONDA หัวทะเล', web: 'https://nakhonratchasimahonda.business.site' },
+            { m: 'โชคชัย (โตโยต้าโคราช 1988)', fb: 'https://www.facebook.com/ToyotaKorat1988' }
+        ];
+        const BRAND_SITE = {
+            Toyota: 'https://www.toyota.co.th', Honda: 'https://www.honda.co.th', Isuzu: 'https://www.isuzu-tis.com',
+            Nissan: 'https://www.nissan.co.th', Mitsubishi: 'https://www.mitsubishi-motors.co.th', Mazda: 'https://www.mazda.co.th',
+            Ford: 'https://www.ford.co.th', MG: 'https://www.mgcars.com', BYD: 'https://www.byd.com/th',
+            BMW: 'https://www.bmw.co.th', Benz: 'https://www.mercedes-benz.co.th'
+        };
+
+        function buildDepts(s) {
+            const note = s.hoursNote || '';
+            const knownIsService = /ศูนย์บริการ/.test(note) && !BOTH_KNOWN.some(k => s.name.includes(k));
+            const both = BOTH_KNOWN.some(k => s.name.includes(k));
+            const known = { hours: s.hours, estimated: !!s.hoursEstimated, note: note };
+            const guess = k => ({ hours: EST_HOURS[k](), estimated: true, note: '' });
+
+            s.depts = {
+                sales: both ? Object.assign({}, known) : (knownIsService ? guess('sales') : Object.assign({}, known)),
+                service: both ? Object.assign({}, known) : (knownIsService ? Object.assign({}, known) : guess('service'))
+            };
+            // เบอร์โทร: ต้นทางให้มาเบอร์เดียว = เบอร์ศูนย์ (ใช้ร่วมกันทั้งสองแผนก)
+            const shared = s.phone ? [s.phone] : [];
+            s.depts.sales.phones = shared.slice();
+            s.depts.service.phones = shared.slice();
+            s.depts.sales.phoneShared = shared.length > 0;
+            s.depts.service.phoneShared = shared.length > 0;
+            if (s.brand === 'Benz' && s.name.includes('MB โคราช')) { // ต้นทางแยกเบอร์ขาย / เบอร์นัดหมายล่วงหน้า
+                s.depts.sales.phones = ['089-845-5885'];  s.depts.sales.phoneShared = false;
+                s.depts.service.phones = ['093-392-9922', '089-845-5995']; s.depts.service.phoneShared = false;
+                s.depts.service.phoneLabel = 'โทรนัดหมายล่วงหน้า';
+            }
+            const extra = BRANCH_LINKS.find(l => s.name.includes(l.m)) || {};
+            s.links = { web: extra.web || null, line: extra.line || null, fb: extra.fb || null };
+        }
+        SHOWROOMS_DATABASE.forEach(buildDepts);
+
+        function deptInfo(item, dept) { return item.depts[dept || currentDept]; }
+
+        function contactLinks(item) {
+            const out = [];
+            if (item.links.line) out.push({ icon: 'fa-brands fa-line', label: 'LINE สาขา', url: item.links.line });
+            if (item.links.fb) out.push({ icon: 'fa-brands fa-facebook', label: 'Facebook สาขา', url: item.links.fb });
+            if (item.links.web) out.push({ icon: 'fa-solid fa-globe', label: 'เว็บสาขา/ตัวแทน', url: item.links.web });
+            if (BRAND_SITE[item.brand]) out.push({ icon: 'fa-solid fa-link', label: 'เว็บหลักแบรนด์ (จองทดลองขับ/นัดหมาย)', url: BRAND_SITE[item.brand] });
+            else out.push({ icon: 'fa-solid fa-magnifying-glass', label: 'ค้นหาช่องทางติดต่อบน Google', url: `https://www.google.com/search?q=${encodeURIComponent(item.brand + ' นครราชสีมา ทดลองขับ ติดต่อ')}` });
+            return out;
+        }
+
+        const DAY_NAMES = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+
+        let showrooms = [...SHOWROOMS_DATABASE];
+        let apiKey = '';
+        try { apiKey = localStorage.getItem('korat_google_api_key') || ''; } catch (e) { apiKey = ''; }
+
+        // DOM References
+        const gridEl = document.getElementById('showroomsGrid');
+        const emptyStateEl = document.getElementById('emptyState');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearch');
+        const fuelFilter = document.getElementById('fuelFilter');
+        const brandFilter = document.getElementById('brandFilter');
+        const districtFilter = document.getElementById('districtFilter');
+        const openNowToggle = document.getElementById('openNowToggle');
+        const countBadge = document.getElementById('showroomCount');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initClock();
+            populateFilters();
+            renderApp();
+            document.getElementById('heroCount').textContent = showrooms.length;
+
+            searchInput.addEventListener('input', handleSearch);
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                clearSearchBtn.classList.add('hidden');
+                renderApp();
+            });
+
+            fuelFilter.addEventListener('change', renderApp);
+            brandFilter.addEventListener('change', renderApp);
+            districtFilter.addEventListener('change', renderApp);
+            openNowToggle.addEventListener('change', renderApp);
+
+            if (apiKey) document.getElementById('apiKeyInput').value = apiKey;
+
+            updateThemeIcon();
+            updateDeptButtons();
+            updatePhotoHint();
+            requestLocation();
+
+            // อัปเดตสถานะเปิด-ปิดทุก 1 นาที
+            setInterval(renderApp, 60000);
+        });
+
+        // ===== เวลาประเทศไทย (Asia/Bangkok) ไม่ขึ้นกับเขตเวลาเครื่อง =====
+        function bangkokNow() {
+            const parts = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'Asia/Bangkok', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+            }).formatToParts(new Date());
+            const get = t => parts.find(p => p.type === t).value;
+            const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+            return { day: dayMap[get('weekday')], minutes: (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10) };
+        }
+
+        function initClock() {
+            const updateTime = () => {
+                const now = new Date();
+                document.getElementById('clockDate').textContent = now.toLocaleDateString('th-TH', {
+                    timeZone: 'Asia/Bangkok', day: 'numeric', month: 'short', year: 'numeric'
+                });
+                document.getElementById('clockTime').textContent = now.toLocaleTimeString('th-TH', {
+                    timeZone: 'Asia/Bangkok', hour12: false
+                });
+            };
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
+
+        function toMin(t) { const [h, m] = t.split(':').map(Number); return h * 60 + m; }
+
+        function findNextOpen(hours, fromDay, includeToday, nowMin) {
+            for (let off = includeToday ? 0 : 1; off <= 7; off++) {
+                const d = (fromDay + off) % 7;
+                const h = hours[d];
+                if (h && h !== 'CALL') {
+                    if (off === 0 && toMin(h.open) <= nowMin) continue;
+                    return { off, day: d, open: h.open };
+                }
+            }
+            return null;
+        }
+
+        function getOpenStatus(hours) {
+            const { day, minutes } = bangkokNow();
+            const today = hours[day];
+
+            if (today === 'CALL') {
+                return { isOpen: false, call: true, text: 'โทรสอบถามก่อนไป', subtext: 'วันนี้ไม่มีเวลาที่แน่ชัด' };
+            }
+
+            if (today) {
+                const o = toMin(today.open), c = toMin(today.close);
+                if (minutes >= o && minutes < c) {
+                    return { isOpen: true, text: 'เปิดทำการอยู่', subtext: `ปิดเวลา ${today.close} น.` };
+                }
+                if (minutes < o) {
+                    return { isOpen: false, text: 'ยังไม่ถึงเวลาเปิด', subtext: `เปิดวันนี้ ${today.open} น.` };
+                }
+            }
+
+            const nx = findNextOpen(hours, day, false, minutes);
+            let sub = 'ปิดทำการ';
+            if (nx) sub = nx.off === 1 ? `เปิดพรุ่งนี้ ${nx.open} น.` : `เปิดวัน${DAY_NAMES[nx.day]} ${nx.open} น.`;
+            return { isOpen: false, text: today ? 'ปิดทำการแล้ว' : 'ปิดทำการวันนี้', subtext: sub };
+        }
+
+        function populateFilters() {
+            const brands = [...new Set(showrooms.map(s => s.brand))].sort();
+            const districts = [...new Set(showrooms.map(s => s.district))].sort((a, b) => a.localeCompare(b, 'th'));
+
+            brandFilter.innerHTML = '<option value="ALL">ทุกยี่ห้อ (All Brands)</option>';
+            brands.forEach(b => {
+                const opt = document.createElement('option');
+                opt.value = b;
+                opt.textContent = `${BRAND_LABEL[b] || b} (${showrooms.filter(s => s.brand === b).length})`;
+                brandFilter.appendChild(opt);
+            });
+
+            districtFilter.innerHTML = '<option value="ALL">ทุกอำเภอในนครราชสีมา</option>';
+            districts.forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = `อ.${d} (${showrooms.filter(s => s.district === d).length})`;
+                districtFilter.appendChild(opt);
+            });
+        }
+
+        function handleSearch() {
+            clearSearchBtn.classList.toggle('hidden', searchInput.value.trim() === '');
+            renderApp();
+        }
+
+        function renderApp() {
+            const query = searchInput.value.trim().toLowerCase();
+            const selectedFuel = fuelFilter.value;
+            const selectedBrand = brandFilter.value;
+            const selectedDistrict = districtFilter.value;
+            const openNowOnly = openNowToggle.checked;
+
+            const withStatus = showrooms.map(item => ({ item, status: getOpenStatus(deptInfo(item).hours) }));
+
+            const filtered = withStatus.filter(({ item, status }) => {
+                const matchQuery = !query ||
+                    item.name.toLowerCase().includes(query) ||
+                    item.brand.toLowerCase().includes(query) ||
+                    item.district.toLowerCase().includes(query) ||
+                    (item.address || '').toLowerCase().includes(query) ||
+                    (item.landmark || '').toLowerCase().includes(query);
+
+                const matchFuel = selectedFuel === 'ALL' || item.fuelType === selectedFuel;
+                const matchBrand = selectedBrand === 'ALL' || item.brand === selectedBrand;
+                const matchDistrict = selectedDistrict === 'ALL' || item.district === selectedDistrict;
+                const matchOpenNow = !openNowOnly || status.isOpen;
+                return matchQuery && matchFuel && matchBrand && matchDistrict && matchOpenNow;
+            });
+
+            const openCount = withStatus.filter(x => x.status.isOpen).length;
+            document.getElementById('statTotal').textContent = showrooms.length;
+            document.getElementById('statOpen').textContent = openCount;
+            document.getElementById('statClosed').textContent = showrooms.length - openCount;
+            countBadge.textContent = `${filtered.length} รายการ`;
+
+            gridEl.innerHTML = '';
+            if (filtered.length === 0) {
+                emptyStateEl.classList.remove('hidden');
+            } else {
+                emptyStateEl.classList.add('hidden');
+                if (sortMode === 'nearest' && userLoc) {
+                    filtered.sort((a, b) => { const da = distanceKm(a.item), db = distanceKm(b.item); return (da === null ? 1e9 : da) - (db === null ? 1e9 : db); });
+                }
+                filtered.forEach(({ item, status }) => gridEl.appendChild(createCardElement(item, status)));
+                queuePhotos(filtered.map(f => f.item));
+            }
+        }
+
+        function getFuelBadgeHtml(fuelType) {
+            if (fuelType === 'EV') {
+                return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200"><i class="fa-solid fa-bolt text-emerald-600"></i> EV 100%</span>`;
+            } else if (fuelType === 'MIXED') {
+                return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold bg-violet-100 text-violet-800 border border-violet-200"><i class="fa-solid fa-plug-circle-bolt text-violet-600"></i> EV + น้ำมัน</span>`;
+            } else if (fuelType === 'HYBRID') {
+                return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold bg-sky-100 text-sky-800 border border-sky-200"><i class="fa-solid fa-leaf text-sky-600"></i> Hybrid</span>`;
+            }
+            return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700 border border-slate-200"><i class="fa-solid fa-gas-pump text-slate-500"></i> น้ำมัน</span>`;
+        }
+
+        function getVerifyBadgeHtml(item) {
+            if (item.verified === 'coord') {
+                return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200" title="นำทางด้วยพิกัด lat,lng ตรงจุด"><i class="fa-solid fa-location-crosshairs"></i> พิกัดยืนยัน</span>`;
+            } else if (item.verified === 'pin') {
+                return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-sky-50 text-sky-700 border border-sky-200" title="เปิดหมุดจริงของศูนย์นี้ใน Google Maps"><i class="fa-solid fa-map-pin"></i> หมุดจริงของศูนย์</span>`;
+            }
+            return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200" title="ยังไม่มีพิกัดยืนยัน ระบบค้นหาตามชื่อศูนย์"><i class="fa-solid fa-magnifying-glass-location"></i> ค้นหาตามชื่อ</span>`;
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        function createCardElement(item, status) {
+            const card = document.createElement('div');
+            card.className = "bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between group";
+
+            let statusBadgeClass, statusDotClass;
+            if (status.isOpen) { statusBadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200"; statusDotClass = "bg-emerald-500"; }
+            else if (status.call) { statusBadgeClass = "bg-amber-50 text-amber-700 border-amber-200"; statusDotClass = "bg-amber-500"; }
+            else { statusBadgeClass = "bg-rose-50 text-rose-700 border-rose-200"; statusDotClass = "bg-rose-500"; }
+
+            const directNavUrl = getDirectionsUrl(item);
+            const locLine = item.address || item.landmark || 'ดูตำแหน่งในแผนที่';
+            const brandInitial = escapeHtml(item.brand[0]);
+
+            card.innerHTML = `
+                <div>
+                    ${cardPhotoHtml(item)}
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <img src="${item.logo}" alt="${escapeHtml(item.brand)}" class="w-10 h-10 shrink-0 rounded-xl object-contain bg-slate-50 p-1.5 border border-slate-100" onerror="this.onerror=null; this.src='https://placehold.co/40x40/f1f5f9/475569?text=${brandInitial}';">
+                            <div class="min-w-0">
+                                <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-0.5">
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">${escapeHtml(item.brand)} • อ.${escapeHtml(item.district)}</span>
+                                    ${getFuelBadgeHtml(item.fuelType)}
+                                </div>
+                                <h4 class="font-bold text-slate-800 text-base group-hover:text-brand-600 transition duration-150 leading-snug">${escapeHtml(item.name)}</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border ${statusBadgeClass} text-xs font-semibold mb-2 w-full justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full ${statusDotClass} ${status.isOpen ? 'animate-pulse' : ''}"></span>
+                            <span>${DEPT_SHORT[currentDept]}: ${status.text}</span>
+                        </div>
+                        <span class="font-normal opacity-80 text-[11px]">${status.subtext}</span>
+                    </div>
+                    ${deptInfo(item).estimated ? `<p class="text-[10px] text-amber-600 mb-2"><i class="fa-solid fa-triangle-exclamation mr-1"></i>เวลา${DEPT_SHORT[currentDept]}โดยประมาณ — โปรดโทรยืนยันก่อนเดินทาง</p>` : ''}
+
+                    <p class="text-xs text-slate-500 line-clamp-2 mb-2 leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-slate-400 mr-1"></i>${escapeHtml(locLine)}
+                    </p>
+                    <div class="mb-4 flex flex-wrap items-center gap-2">${getVerifyBadgeHtml(item)}${distanceBadge(item)}</div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                    <button onclick="openDetailModal('${item.id}', currentDept)" class="px-3 py-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-medium transition flex items-center justify-center gap-1.5 border border-slate-200/60">
+                        <i class="fa-solid fa-map-location-dot text-brand-600"></i>
+                        <span>ดูแผนที่ & เวลา</span>
+                    </button>
+                    <a href="${directNavUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-md shadow-brand-600/20">
+                        <i class="fa-solid fa-diamond-turn-right text-white"></i>
+                        <span>นำทาง (Maps)</span>
+                    </a>
+                </div>
+            `;
+            return card;
+        }
+
+        function openDetailModal(id, dept) {
+            const item = showrooms.find(s => s.id === id);
+            if (!item) return;
+            currentModalItem = item;
+            modalDept = dept || currentDept;
+            const modal = document.getElementById('detailModal');
+            const container = document.getElementById('modalContainer');
+
+            document.getElementById('modalTitle').textContent = item.name;
+            document.getElementById('modalBrand').textContent = item.brand;
+            document.getElementById('modalAddress').textContent =
+                [item.address, item.landmark ? `จุดสังเกต: ${item.landmark}` : '', `อ.${item.district} จ.นครราชสีมา`].filter(Boolean).join('\n');
+            document.getElementById('modalAddress').style.whiteSpace = 'pre-line';
+            document.getElementById('modalVerify').innerHTML = getVerifyBadgeHtml(item) +
+                (hasCoord(item) ? `<span class="ml-2 text-[11px] font-mono text-slate-400">${item.lat.toFixed(6)}, ${item.lng.toFixed(6)}</span>` : '');
+
+            updateModalMap(item);
+            document.getElementById('modalPhoto').innerHTML = photoBoxHtml(item, 'h-44', 'rounded-2xl', 'border border-slate-200');
+            queuePhotos([item]);
+            document.getElementById('modalFuelBadgeWrap').innerHTML = getFuelBadgeHtml(item.fuelType);
+
+            const logoImg = document.getElementById('modalLogoImg');
+            logoImg.src = item.logo;
+            logoImg.onerror = () => { logoImg.onerror = null; logoImg.src = `https://placehold.co/48x48/f1f5f9/475569?text=${encodeURIComponent(item.brand[0])}`; };
+
+            renderShareRow(item);
+            renderModalDept();
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+        }
+
+        function setModalDept(d) { modalDept = d; renderModalDept(); }
+
+        function renderModalDept() {
+            const item = currentModalItem;
+            if (!item) return;
+            const info = deptInfo(item, modalDept);
+            const status = getOpenStatus(info.hours);
+
+            // แท็บ
+            const tabs = document.getElementById('modalTabs');
+            tabs.innerHTML = ['sales', 'service'].map(d => `
+                <button onclick="setModalDept('${d}')" class="px-3 py-2 rounded-lg text-sm font-semibold transition ${d === modalDept ? 'bg-white text-brand-600 shadow' : 'text-slate-500 hover:text-slate-700'}">
+                    <i class="fa-solid ${d === 'sales' ? 'fa-car' : 'fa-screwdriver-wrench'} mr-1"></i>${d === 'sales' ? 'ฝ่ายขาย (Sales)' : 'ศูนย์บริการ/อะไหล่'}
+                </button>`).join('');
+
+            // สถานะ
+            const statusBadge = document.getElementById('modalStatusBadge');
+            if (status.isOpen) {
+                statusBadge.className = 'px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 bg-emerald-100 text-emerald-800 border border-emerald-200';
+                statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> เปิดทำการอยู่ (${status.subtext})`;
+            } else if (status.call) {
+                statusBadge.className = 'px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 bg-amber-100 text-amber-800 border border-amber-200';
+                statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500"></span> ${status.text}`;
+            } else {
+                statusBadge.className = 'px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 bg-rose-100 text-rose-800 border border-rose-200';
+                statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-500"></span> ปิดทำการ (${status.subtext})`;
+            }
+
+            // ตารางเวลา 7 วัน ของแผนกที่เลือก
+            const sched = document.getElementById('scheduleContainer');
+            sched.innerHTML = '';
+            const today = bangkokNow().day;
+            DAY_NAMES.forEach((dayName, idx) => {
+                const h = info.hours[idx];
+                const isToday = idx === today;
+                let right;
+                if (h === 'CALL') right = '<span class="text-amber-600 font-medium">โทรสอบถาม</span>';
+                else if (h) right = `${h.open} - ${h.close} น.`;
+                else right = '<span class="text-rose-500 font-medium">ปิดทำการ</span>';
+                const row = document.createElement('div');
+                row.className = `flex items-center justify-between p-2.5 sm:p-3 ${isToday ? 'bg-brand-50/70 font-semibold text-brand-900' : 'text-slate-600'}`;
+                row.innerHTML = `<div class="flex items-center gap-2">${isToday ? '<span class="text-xs px-2 py-0.5 rounded bg-brand-600 text-white font-normal">วันนี้</span>' : ''}<span>วัน${dayName}</span></div><span>${right}</span>`;
+                sched.appendChild(row);
+            });
+            const noteTxt = [DEPT_LABEL[modalDept], info.note, info.estimated ? 'เวลาโดยประมาณ ยังไม่มีข้อมูลยืนยันของแผนกนี้ โปรดโทรยืนยัน' : ''].filter(Boolean).join(' • ');
+            document.getElementById('scheduleNote').textContent = '* ' + noteTxt;
+
+            // ปุ่มโทรหลัก
+            const phoneBtn = document.getElementById('modalPhoneBtn');
+            const navBtn = document.getElementById('modalNavBtn');
+            if (info.phones.length) {
+                phoneBtn.href = `tel:${info.phones[0].replace(/-/g, '')}`;
+                phoneBtn.classList.remove('hidden');
+                navBtn.classList.remove('sm:col-span-2');
+            } else {
+                phoneBtn.classList.add('hidden');
+                navBtn.classList.add('sm:col-span-2');
+            }
+
+            renderDeptExtras(item, info);
+        }
+
+        function renderDeptExtras(item, info) {
+            const isSales = modalDept === 'sales';
+            const phoneHtml = info.phones.length
+                ? info.phones.map((ph, i) => `<a href="tel:${ph.replace(/-/g, '')}" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium"><i class="fa-solid fa-phone text-emerald-400"></i>${i === 0 ? (info.phoneLabel || (isSales ? 'โทรฝ่ายขาย' : 'โทรศูนย์บริการ')) : 'อีกเบอร์'} ${ph}</a>`).join(' ') +
+                  (info.phoneShared ? `<p class="text-[11px] text-amber-600 mt-1">* ต้นทางให้เบอร์เดียว ใช้เป็นเบอร์ศูนย์ร่วมกัน (ยังไม่มีข้อมูลสายตรงแยกฝ่ายขาย/บริการ)</p>` : '')
+                : `<p class="text-xs text-slate-500">ยังไม่มีเบอร์โทรที่ตรวจสอบแล้วของสาขานี้ — ดูเบอร์ล่าสุดได้ที่หน้า Google Maps ของสาขา</p>`;
+
+            const links = contactLinks(item).map(l => `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium border border-slate-200"><i class="${l.icon}"></i>${l.label}</a>`).join(' ');
+
+            document.getElementById('deptExtras').innerHTML = `
+                <div>
+                    <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">ติดต่อ${isSales ? 'ฝ่ายขาย' : 'ศูนย์บริการ & อะไหล่'}</h4>
+                    <div class="flex flex-wrap gap-2">${phoneHtml}</div>
+                </div>
+                <div class="flex flex-wrap gap-2">${links}</div>
+                <button onclick="toggleBookingForm()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-white font-semibold text-sm shadow-md ${isSales ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-amber-600 hover:bg-amber-700'}">
+                    <i class="fa-solid ${isSales ? 'fa-key' : 'fa-calendar-check'}"></i>
+                    ${isSales ? 'นัดหมายทดลองขับ (Book a Test Drive)' : 'จองคิวเข้าศูนย์บริการ (เช็กระยะ/ซ่อมบำรุง)'}
+                </button>
+                <div id="bookingForm" class="hidden p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-3">
+                    <p class="text-[11px] text-slate-500 leading-relaxed">กรอกข้อมูลแล้วส่งข้อความผ่าน LINE หรือคัดลอกไปส่งให้สาขา — <b>ฟอร์มนี้ไม่ได้ส่งถึงสาขาโดยอัตโนมัติ</b> สาขาจะยืนยันคิวกับคุณอีกครั้ง</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <input id="bfName" type="text" placeholder="ชื่อ-นามสกุล" class="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white">
+                        <input id="bfPhone" type="tel" placeholder="เบอร์ติดต่อกลับ" class="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white">
+                        <input id="bfDate" type="date" class="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white" onchange="checkBookingDate()">
+                        <select id="bfSlot" class="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white">
+                            <option value="ช่วงเช้า (08:00–12:00)">ช่วงเช้า (08:00–12:00)</option>
+                            <option value="ช่วงบ่าย (13:00–17:00)">ช่วงบ่าย (13:00–17:00)</option>
+                        </select>
+                        ${isSales
+                            ? `<input id="bfModel" type="text" placeholder="รุ่นรถที่สนใจ (เช่น Yaris Cross, ATTO 3)" class="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white sm:col-span-2">`
+                            : `<input id="bfModel" type="text" placeholder="ยี่ห้อ/รุ่น และเลขทะเบียน" class="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white">
+                               <select id="bfService" class="px-3 py-2 rounded-lg border border-slate-200 text-sm bg-white">
+                                   <option>เช็กระยะ</option><option>ซ่อมทั่วไป</option><option>เปลี่ยนยาง/แบตเตอรี่</option><option>ซื้ออะไหล่</option><option>งานตัวถังและสี</option>
+                               </select>`}
+                    </div>
+                    <p id="bfWarn" class="hidden text-[11px] text-rose-500"></p>
+                    <div class="flex flex-wrap gap-2">
+                        <a id="bfLine" href="#" target="_blank" rel="noopener noreferrer" onclick="return prepareBooking(this)" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-[#06c755] hover:opacity-90 text-white text-sm font-semibold"><i class="fa-brands fa-line"></i>ส่งทาง LINE</a>
+                        <button onclick="copyBooking()" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 text-white text-sm font-semibold"><i class="fa-regular fa-copy"></i>คัดลอกข้อความ</button>
+                        ${info.phones.length ? `<a href="tel:${info.phones[0].replace(/-/g, '')}" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold border border-slate-200"><i class="fa-solid fa-phone"></i>โทรนัดเลย</a>` : ''}
+                    </div>
+                </div>`;
+        }
+
+        function toggleBookingForm() {
+            const f = document.getElementById('bookingForm');
+            f.classList.toggle('hidden');
+            const d = document.getElementById('bfDate');
+            if (d && !d.value) { const t = new Date(); t.setDate(t.getDate() + 1); d.min = new Date().toISOString().slice(0, 10); d.value = t.toISOString().slice(0, 10); checkBookingDate(); }
+        }
+
+        function checkBookingDate() {
+            const d = document.getElementById('bfDate').value;
+            const warn = document.getElementById('bfWarn');
+            if (!d || !currentModalItem) return;
+            const day = new Date(d + 'T00:00:00').getDay();
+            const h = deptInfo(currentModalItem, modalDept).hours[day];
+            if (!h) { warn.textContent = `* วัน${DAY_NAMES[day]} ${DEPT_SHORT[modalDept]}ปิดทำการ — เลือกวันอื่นหรือโทรสอบถาม`; warn.classList.remove('hidden'); }
+            else if (h === 'CALL') { warn.textContent = `* วัน${DAY_NAMES[day]} ต้องโทรสอบถามก่อน`; warn.classList.remove('hidden'); }
+            else warn.classList.add('hidden');
+        }
+
+        function bookingText() {
+            const item = currentModalItem;
+            const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+            const isSales = modalDept === 'sales';
+            const dateStr = v('bfDate') ? new Date(v('bfDate') + 'T00:00:00').toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : '-';
+            const lines = [
+                isSales ? `สวัสดีครับ/ค่ะ สนใจนัดหมายทดลองขับ ที่ ${item.name}` : `สวัสดีครับ/ค่ะ ขอจองคิวเข้าศูนย์บริการ ที่ ${item.name}`,
+                `ชื่อ: ${v('bfName') || '-'}`,
+                `เบอร์ติดต่อ: ${v('bfPhone') || '-'}`,
+                `วันที่สะดวก: ${dateStr} ${v('bfSlot')}`,
+                isSales ? `รุ่นที่สนใจ: ${v('bfModel') || '-'}` : `รถ/ทะเบียน: ${v('bfModel') || '-'}`
+            ];
+            if (!isSales) lines.push(`บริการ: ${v('bfService')}`);
+            lines.push(`ตำแหน่งสาขา: ${getPinUrl(item)}`);
+            return lines.join('\n');
+        }
+
+        function prepareBooking(a) {
+            a.href = `https://line.me/R/msg/text/?${encodeURIComponent(bookingText())}`;
+            return true;
+        }
+
+        function copyBooking() {
+            const t = bookingText();
+            if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast('คัดลอกข้อความแล้ว'), () => window.prompt('คัดลอกข้อความนี้', t));
+            else window.prompt('คัดลอกข้อความนี้', t);
+        }
+
+        function toast(msg) {
+            let el = document.getElementById('toast');
+            if (!el) { el = document.createElement('div'); el.id = 'toast'; el.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] px-4 py-2 rounded-xl bg-slate-900 text-white text-sm shadow-lg transition-opacity'; document.body.appendChild(el); }
+            el.textContent = msg; el.style.opacity = '1';
+            clearTimeout(el._t); el._t = setTimeout(() => { el.style.opacity = '0'; }, 2000);
+        }
+
+        // ================= แชร์ตำแหน่ง =================
+        function renderShareRow(item) {
+            const url = getPinUrl(item);
+            const text = `${item.name} (${item.district}, นครราชสีมา)`;
+            const btn = 'inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold border border-slate-200';
+            document.getElementById('shareRow').innerHTML = `
+                <a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}" target="_blank" rel="noopener noreferrer" class="${btn} bg-[#06c755] text-white border-transparent"><i class="fa-brands fa-line"></i>LINE</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}" target="_blank" rel="noopener noreferrer" class="${btn} bg-[#1877f2] text-white border-transparent"><i class="fa-brands fa-facebook"></i>Facebook</a>
+                <button onclick="copyShareLink()" class="${btn} bg-slate-100 text-slate-700"><i class="fa-regular fa-copy"></i>คัดลอกลิงก์</button>
+                ${navigator.share ? `<button onclick="nativeShare()" class="${btn} bg-slate-100 text-slate-700"><i class="fa-solid fa-share-nodes"></i>แชร์อื่นๆ</button>` : ''}`;
+        }
+        function copyShareLink() {
+            const url = getPinUrl(currentModalItem);
+            if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => toast('คัดลอกลิงก์แล้ว'), () => window.prompt('คัดลอกลิงก์', url));
+            else window.prompt('คัดลอกลิงก์', url);
+        }
+        function nativeShare() {
+            const it = currentModalItem;
+            navigator.share({ title: it.name, text: `${it.name} (${it.district}, นครราชสีมา)`, url: getPinUrl(it) }).catch(() => {});
+        }
+
+        // ================= สลับแผนก / เรียงลำดับ =================
+        function updateDeptButtons() {
+            const on = 'bg-white text-brand-600 shadow', off = 'text-slate-500 hover:text-slate-700';
+            const bs = document.getElementById('deptBtnSales'), bv = document.getElementById('deptBtnService');
+            bs.className = `px-3 py-2 rounded-lg text-sm font-semibold transition ${currentDept === 'sales' ? on : off}`;
+            bv.className = `px-3 py-2 rounded-lg text-sm font-semibold transition ${currentDept === 'service' ? on : off}`;
+            bs.innerHTML = '<i class="fa-solid fa-car mr-1"></i>ฝ่ายขาย (Sales)';
+            bv.innerHTML = '<i class="fa-solid fa-screwdriver-wrench mr-1"></i>ศูนย์บริการ/อะไหล่';
+        }
+        function setDept(d) { currentDept = d; updateDeptButtons(); renderApp(); }
+        function setSort(v) { sortMode = v; renderApp(); }
+
+        function closeDetailModal() {
+            currentModalItem = null;
+            const modal = document.getElementById('detailModal');
+            const container = document.getElementById('modalContainer');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('modalMapIframe').src = '';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetailModal(); });
+
+        function toggleApiModal() {
+            const modal = document.getElementById('apiModal');
+            modal.classList.toggle('opacity-0');
+            modal.classList.toggle('pointer-events-none');
+        }
+
+        function saveApiKey() {
+            const input = document.getElementById('apiKeyInput').value.trim();
+            apiKey = input;
+            Object.keys(photoCache).forEach(k => delete photoCache[k]);
+            Object.keys(photoState).forEach(k => delete photoState[k]);
+            photoQueue.length = 0; photoError = '';
+            try { localStorage.setItem('korat_google_api_key', input); } catch (e) { /* ignore */ }
+            toggleApiModal();
+            updatePhotoHint();
+            renderApp();
+        }
+
+        function resetFilters() {
+            sortMode = userLoc ? 'nearest' : 'default';
+            document.getElementById('sortSelect').value = sortMode;
+            searchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            fuelFilter.value = 'ALL';
+            brandFilter.value = 'ALL';
+            districtFilter.value = 'ALL';
+            openNowToggle.checked = false;
+            renderApp();
+        }
+    </script>
+
+</body>
+</html>
